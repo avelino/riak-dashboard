@@ -12,6 +12,10 @@ angular.module('riakDashboardApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/bucket', {
+        templateUrl: 'views/bucket.html',
+        controller: 'BucketCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
