@@ -17,7 +17,8 @@ def index(path):
     response.set_header('charset', 'UTF-8')
 
     j = "&".join("%s=%s" % tup for tup in request.GET.items())
-    re = requests.get('http://127.0.0.1:8098/{}?{}'.format(path, j))
+    r = getattr(requests, request.method.lower())
+    re = r('http://127.0.0.1:8098/{}?{}'.format(path, j))
 
     if (request.query.callback):
         response.content_type = "application/javascript"
