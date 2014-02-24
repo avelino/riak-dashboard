@@ -4,12 +4,13 @@ riak-dashboard
 Riak Dashboard is a web-based administrative console for inspecting and manipulating Riak clusters.
 
 
-# Install
+## Install
 
     bower install
     pip install -r requirements.txt
 
 
-# Run
+## Run
 
     grunt serve
+    python api.py
