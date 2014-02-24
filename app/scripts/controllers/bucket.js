@@ -11,4 +11,5 @@ angular.module('riakDashboardApp')
     Bucket.jsonp(function(b){
       $scope.buckets = b.buckets;
     });
+    $scope.menu_bucket = true;
   }]);

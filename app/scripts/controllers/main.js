@@ -7,4 +7,5 @@ angular.module('riakDashboardApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.menu_home = true;
   }]);
