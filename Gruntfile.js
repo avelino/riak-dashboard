@@ -18,6 +18,16 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    // Start proxy API
+    shell: {
+      pythonServer: {
+        options: {
+          stdout: true
+        },
+        command: 'python api.py'
+      }
+    },
+
     // Project settings
     yeoman: {
       // configurable paths
@@ -375,4 +385,8 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-shell');
+
+  grunt.registerTask('default', ['shell:pythonServer']);
 };

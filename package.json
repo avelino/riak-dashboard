@@ -1,7 +1,9 @@
 {
   "name": "riakdashboard",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt-shell": "^0.6.4"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
