@@ -14,3 +14,8 @@ Riak Dashboard is a web-based administrative console for inspecting and manipula
 
     grunt serve
     python api.py
+
+
+## Sponsor
+
+* [UP! Essência](http://www.upessencia.com.br/)
