@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('riakDashboardApp')
-  .controller('MainCtrl', ['$scope', 'Bucket', function ($scope, Bucket) {
+  .controller('MainCtrl', ['$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
