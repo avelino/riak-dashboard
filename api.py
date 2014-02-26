@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests
+import json
 
 from bottle import route, run, response, request
 
@@ -20,16 +21,23 @@ def index(path):
     method = request.query._method
     r = getattr(requests, method)
     re = r('http://127.0.0.1:8098/{}?{}'.format(path, j))
-    print re
 
+    d = json.dumps(re.text)
     if request.query.callback:
         response.content_type = "application/javascript"
-        d = re.text
+
+        if path == 'ping' and re.text == "OK":
+            d = {"ping": "OK"}
+        elif(path == 'ping'):
+            d = {"ping": "OFF"}
+
         if method in ['delete']:
             d = {}
+
         return jsonp(request, d)
+
     response.content_type = 'application/json'
-    return re.text
+    return d
 
 
 run(host='127.0.0.1', port=8889)
