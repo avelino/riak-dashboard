@@ -20,6 +20,15 @@ angular.module('riakDashboardApp')
     };
 
     $scope.bucket_delete = function (bucket) {
+      $jsonp('http://127.0.0.1:8889/buckets/'+ bucket +'/keys?keys=true')
+        .jsonp(function(b){
+          for (var i in b.keys){
+            console.log(b.keys[i])
+            $jsonp('http://127.0.0.1:8889/buckets/'+ bucket +'/keys/'+ b.keys[i])
+            .delete();
+          };
+          $scope.buckets.splice($scope.buckets.indexOf(b), 1)
+        });
     };
 
     $scope.menu_bucket = true;
