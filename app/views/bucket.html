@@ -1,7 +1,7 @@
 <div class="header" ng-include="'views/contribs/header.html'"></div>
 
 <ul>
-  <li ng-repeat="b in buckets"> {{b}}
+  <li ng-repeat="b in buckets"> <a href="#/bucket/{{b}}">{{b}}</a>
     <ul>
       <li><a href="javascript:void(0)" ng-click="bucket_reset(b)">reset</a></li>
       <li><a href="javascript:void(0)" ng-click="bucket_delete(b)">delete</a></li>
