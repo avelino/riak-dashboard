@@ -27,7 +27,7 @@ angular.module('riakDashboardApp', [
 
   .factory('$jsonp', ['$resource', function($resource){
     return function(URL){
-      return $resource(URL, {}, {
+      return $resource("http://"+ location.host.split(':')[0] +":8889"+ URL, {}, {
         jsonp: {method: 'JSONP', params: {callback: 'JSON_CALLBACK', _method: 'get'}},
         delete: {method: 'JSONP', params: {callback: 'JSON_CALLBACK', _method: 'delete'}}
       });
@@ -36,7 +36,7 @@ angular.module('riakDashboardApp', [
 
   .run(function($rootScope, $jsonp){
 
-    $jsonp('http://127.0.0.1:8889/ping')
+    $jsonp('/ping')
       .jsonp(function(p){
         $rootScope.ping = p.ping;
       });
