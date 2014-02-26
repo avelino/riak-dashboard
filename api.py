@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import json
+import argparse
 
 from bottle import route, run, response, request
 
@@ -40,4 +41,8 @@ def index(path):
     return d
 
 
-run(host='127.0.0.1', port=8889)
+parser = argparse.ArgumentParser(description='API')
+parser.add_argument('--ip', help='Set ip', default='0.0.0.0')
+parser.add_argument('--port', help='Set ip', default=8889)
+
+run(host=parser.get_default('ip'), port=parser.get_default('port'))
