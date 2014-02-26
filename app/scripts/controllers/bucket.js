@@ -1,15 +1,6 @@
 'use strict';
 
 angular.module('riakDashboardApp')
-  .factory('$jsonp', ['$resource', function($resource){
-    return function(URL){
-      return $resource(URL, {}, {
-        jsonp: {method: 'JSONP', params: {callback: 'JSON_CALLBACK', _method: 'get'}},
-        delete: {method: 'JSONP', params: {callback: 'JSON_CALLBACK', _method: 'delete'}}
-      });
-    };
-  }])
-
   .controller('BucketCtrl', ['$scope', '$http', '$jsonp', function ($scope, $http, $jsonp) {
     $jsonp('http://127.0.0.1:8889/buckets?buckets=true').jsonp(function(b){
       $scope.buckets = b.buckets;
