@@ -6,7 +6,7 @@ from bottle import route, run, response, request
 
 
 def jsonp(request, dictionary):
-    if (request.query.callback):
+    if request.query.callback:
         return "%s(%s)" % (request.query.callback, dictionary)
     return dictionary
 
@@ -17,12 +17,17 @@ def index(path):
     response.set_header('charset', 'UTF-8')
 
     j = "&".join("%s=%s" % tup for tup in request.GET.items())
-    r = getattr(requests, request.method.lower())
+    method = request.query._method
+    r = getattr(requests, method)
     re = r('http://127.0.0.1:8098/{}?{}'.format(path, j))
+    print re
 
-    if (request.query.callback):
+    if request.query.callback:
         response.content_type = "application/javascript"
-        return jsonp(request, re.text)
+        d = re.text
+        if method in ['delete']:
+            d = {}
+        return jsonp(request, d)
     response.content_type = 'application/json'
     return re.text
 
