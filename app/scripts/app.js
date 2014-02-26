@@ -12,6 +12,10 @@ angular.module('riakDashboardApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/bucket/:slug', {
+        templateUrl: 'views/bucket_list.html',
+        controller: 'BucketListCtrl'
+      })
       .when('/bucket', {
         templateUrl: 'views/bucket.html',
         controller: 'BucketCtrl'
