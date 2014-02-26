@@ -14,7 +14,6 @@ angular.module('riakDashboardApp')
       $jsonp('/buckets/'+ bucket +'/keys?keys=true')
         .jsonp(function(b){
           for (var i in b.keys){
-            console.log(b.keys[i])
             $jsonp('/buckets/'+ bucket +'/keys/'+ b.keys[i])
             .delete();
           };
