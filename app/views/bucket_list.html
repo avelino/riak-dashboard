@@ -1,0 +1,9 @@
+<div class="header" ng-include="'views/contribs/header.html'"></div>
+
+<ul>
+  <li ng-repeat="k in keys | orderBy:'toString()'"> {{k}}
+    <ul>
+      <li><a href="javascript:void(0)" ng-click="bucket_delete(k)">delete</a></li>
+    </ul>
+  </li>
+</ul>
