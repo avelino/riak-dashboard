@@ -6,6 +6,7 @@ Riak Dashboard is a web-based administrative console for inspecting and manipula
 
 ## Install
 
+    npm install
     bower install
     pip install -r requirements.txt
 
